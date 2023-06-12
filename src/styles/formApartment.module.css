@@ -1,0 +1,229 @@
+
+
+
+    .appliance-amenities h3 {
+    color: white;
+    }
+    .security-amenities h3 {
+    color: white;
+    }
+    
+
+    .flexsecu {
+      display: flex;
+      position: relative;
+      margin-right: 60px;
+      
+      justify-content: space-between; /* Add this line */
+    }
+    .flexapp {
+      display: flex;
+      position: relative;
+      align-items: center;
+      margin-right: 50px;
+      padding: 8px;
+      justify-content: space-between;
+    }
+    /* MODAL*/
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 100%;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+    }
+
+    .modal-content label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .modal-close {
+      margin-top: 10px;
+      background-color: #ccc;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      background-color: #999;
+    }
+
+    .selected-amenities {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .selected-amenity {
+      background-color: #f1f1f1;
+      border-radius: 4px;
+      padding: 4px 8px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+
+    /* FORMSS */
+
+  
+    .forms {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      max-width: 650px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      background: transparent;
+      position: relative;
+      background: rgba(0, 0, 0, 0.6); 
+    }
+    
+    .titles {
+      font-size: 28px;
+      color: #fff94d;
+      font-weight: 600;
+      letter-spacing: -1px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+    }
+    
+    .titles::before,.titles::after {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      left: 0px;
+      background-color: royalblue;
+    }
+    
+    .titles::before {
+      width: 18px;
+      height: 18px;
+      background-color: royalblue;
+    }
+    
+    .titles::after {
+      width: 18px;
+      height: 18px;
+      animation: pulse 1s linear infinite;
+    }
+    
+    .messages, .signin {
+      color: white;
+      font-size: 14px;
+    }
+    
+    .signin {
+      text-align: center;
+    }
+    
+    .signin a {
+      color: royalblue;
+    }
+    
+    .signin a:hover {
+      text-decoration: underline royalblue;
+    }
+    
+    .flexs {
+      display: flex;
+      width: 100%;
+      gap: 6px;
+    }
+    
+    .forms label {
+      position: relative;
+    }
+    
+    .forms label .inputs {
+      width: 100%;
+      padding: 10px 10px 20px 10px;
+      outline: 0;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      border-radius: 10px;
+    }
+
+    .file {
+      color: white;
+      background: black;
+    }
+    
+    
+    
+    .forms label .inputs + span {
+      position: absolute;
+      left: 10px;
+      top: 15px;
+      color: grey;
+      font-size: 0.9em;
+      cursor: text;
+      transition: 0.3s ease;
+    }
+    
+    .forms label .inputs:placeholder-shown + span {
+      top: 15px;
+      font-size: 0.9em;
+    }
+    
+    .forms label .input:focus + span,.forms label .inputs:valid + span {
+      top: 30px;
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+    
+    .forms label .inputs:valid + span {
+      color: green;
+    }
+    
+    .submits {
+      border: none;
+      outline: none;
+      background-color: royalblue;
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      transform: .3s ease;
+    }
+    
+    .submits:hover {
+      background-color: rgb(56, 90, 194);
+    }
+    
+    @keyframes pulse {
+      from {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+    
+      to {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+    
+

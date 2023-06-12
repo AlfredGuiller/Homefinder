@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.dashboard_container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+}
+
+.logo {
+  padding: 20px 20px 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1 {
+  color: #ff7f50;
+  margin: 10px 0px;
+}
+
+.sidebar_ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.sidebar_li {
+  padding: 10px 0px 10px 20px;
+  border-top: 1px solid rgb(102, 97, 97);
+}
+
+.sidebar_a {
+  color: coral;
+  text-decoration: none;
+  display: block;
+  font-size: 1.1em;
+}
+
+.sidebar_a:hover {
+  color: rgb(224, 114, 74);
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.h1_header {
+  margin: 0px;
+  color: black;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0.3em;
+  -webkit-box-shadow: 5px 10px 14px -2px rgba(133, 133, 133, 0.73);
+  box-shadow: 5px 10px 14px -2px rgba(133, 133, 133, 0.73);
+  margin-bottom: 10px;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+}
+
+.adminName {
+  margin-right: 10px;
+}
+
+.logoutbtn {
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  font-size: small;
+  color: #1B2223;
+  padding: 0;
+  border-radius: 0;
+}
+
+.logoutbtn:hover {
+  border-bottom: 1px solid black;
+  padding: 0px;
+  background-color: white;
+  font-size: small;
+  color: #1B2223;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Page content */
+.page_content {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 0.3em;
+  -webkit-box-shadow: 5px 10px 14px -2px rgba(133, 133, 133, 0.73);
+  box-shadow: 5px 10px 14px -2px rgba(133, 133, 133, 0.73);
+}
+
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cards_content {
+  width: 230px;
+  background: #ff7623;
+  background: -moz-linear-gradient(left, #ff7623 0%, #ffda3e 100%);
+  background: -webkit-linear-gradient(left, #ff7623 0%, #ffda3e 100%);
+  background: linear-gradient(to right, #ff7623 0%, #ffda3e 100%);
+  padding: 10px 20px;
+  border-radius: 0.3em;
+  -webkit-box-shadow: 5px 10px 14px -2px rgba(133, 133, 133, 0.73);
+  box-shadow: 5px 10px 14px -2px rgba(133, 133, 133, 0.73);
+}
+
+.account_total {
+  margin: 5px 0px;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.account_header {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.updatebtn {
+  font-weight: 500;
+  padding: 0.3em 1em;
+  border-radius: 0.3em;
+  background-color: rgb(207, 219, 40);
+  border: 1px solid rgb(207, 219, 40);
+  font-size: small;
+  cursor: pointer;
+}
+
+.updatebtn:hover {
+  background-color: rgb(185, 196, 37);
+}
+
+.addnewbtn {
+  font-weight: 500;
+  padding: 0.3em 1em;
+  border-radius: 0.3em;
+  background-color: rgb(49, 192, 56);
+  border: 1px solid rgb(49, 192, 56);
+  font-size: small;
+  cursor: pointer;
+  margin-top: 0px !important;
+}
+
+.addnewbtn:hover {
+  background-color: rgb(52, 175, 58);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  width: 100%;
+}
+
+.closeBtn {
+  font-weight: 500;
+  padding: 0.3em 1em;
+  border-radius: 0.3em;
+  background-color: rgb(216, 37, 37);
+  border: 1px solid rgb(216, 37, 37);
+  font-size: medium;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.closeBtn:hover {
+  background-color: rgb(206, 30, 30);
+}
+
+.addForm {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0px;
+      border-radius: 0px;
+      box-shadow: none;
+      background-color: white;
+}
