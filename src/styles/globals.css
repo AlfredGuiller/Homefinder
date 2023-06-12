@@ -861,7 +861,8 @@ p {
   padding: 10px 24px;
   position: relative;
   left: 10px;
-  bottom: 10px;
+  bottom: 60px;
+ 
   font-size: 18px;
   color: rgb(193, 163, 98);
   border: 2px solid rgb(193, 163, 98);
@@ -902,7 +903,12 @@ p {
   
 
 }
-
+.property-type {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 50px;
+}
 .property-price {
   justify-content: center;
   align-items: center;
@@ -917,6 +923,7 @@ p {
   font-family: 'Courier New', Courier, monospace;
 
  }
+
 .icon-bed {
   font-size: 50px; /* Adjust the size as needed */
   color: rgb(56, 90, 194);
@@ -924,6 +931,15 @@ p {
   
 }
 
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .checkbox-container div {
+    flex-basis: calc(33.33% - 10px); /* Adjust the width as needed */
+    margin-bottom: 10px; /* Adjust the margin as needed */
+  }
 .icon-fac {
   font-size: 45px; 
   padding-bottom: 10px;
@@ -965,10 +981,50 @@ p {
   padding-right: 20px;
 }
 
-.property-bed {
+.property-person {
   margin-top: 10px;
   position: relative;
   margin-left: 50px;
+  position: relative;
+  top: 120px;
+
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  height: 80px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  display: inline-flex;
+  padding: 0 10px;
+  min-width: 100px;
+  box-sizing: content-box;
+}
+
+.property-bath {
+  margin-top: 10px;
+  position: relative;
+  margin-left: 50px;
+ top: 20ch;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  height: 80px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  display: inline-flex;
+  padding: 0 10px;
+  min-width: 100px;
+  box-sizing: content-box;
+}
+
+
+
+.property-bed {
+  margin-top: 10px;
+  position: relative;
+ right: 20ch;
  top: 20ch;
   align-items: center;
   justify-content: center;
@@ -1008,6 +1064,24 @@ p {
   box-sizing: content-box;
 
 }
+
+.property-filter {
+
+
+   margin-left: 10px;
+   position: relative;
+
+   align-items: center;
+   justify-content: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 20px;
+   height: 100%;
+   width: 50%;
+   border-radius: 20px;
+   border: 1px solid #000;
+   padding: 0 10px;
+   box-sizing: content-box;
+ }
 
 
 .property-app {
@@ -1309,30 +1383,206 @@ p {
   cursor: pointer;
 }
 
+.search-filters {
+  display: flex;
+ 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
+
+.label-prop {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.label-loc {
+  font-weight: bold;
+  display:flex;
+  align-items: center;
+}
+.flex-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  
+}
+
+.filter-buttonsnew {
+  position: relative;
+  bottom:80px;
+}
+
+
+  
+ 
+ 
+
+
+.button-fil {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #183153;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: none;
+  font-size: 10px;
+  width:200px;
+  margin-right:30px;
+  margin-top:15px;
+ }
+ 
+.button-fil:after {
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #FFD401;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
+ }
+ 
+ .button-fil:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+ }
+ 
+ .button-fil span {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 18px 25px;
+  color: #fff;
+  font-size: 1.125em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+ }
+ 
+ .button-fil:hover span {
+  color: #183153;
+  animation: scaleUp 0.3s ease-in-out;
+ }
+ 
+ @keyframes scaleUp {
+  0% {
+   transform: scale(1);
+  }
+ 
+  50% {
+   transform: scale(0.95);
+  }
+ 
+  100% {
+   transform: scale(1);
+  }
+ }
+ .filter-buttons {
+  display: flex;
+  position: relative;
+  left: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+ }
+ 
+
+.filter-item{
+  font-size: 30px;
+  
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
+}
+.filter-loc {
+  font-size: 30px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  margin-right:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
+}
+.date{
+  font-weight:bold;
+  font-size:20px;
+}
+.label-filter {
+  font-size: 30px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(229, 141, 86);
+  display: flex;
+  margin-top:40px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
 .addressflex {
    display: flex;
    font-size: 20px;
    position: relative;
-   bottom: 30px;
+   bottom: 50px;
+  
+}
+
+.verified {
+  position:  relative;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.usertype{
+  font-weight: 50px;
+}
+
+.addressflex span {
+  
+  color: blue;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.details {
+  position: relative;
+  bottom: 50px;
 }
 
 .propertys-boxs {
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 550px;
+  height: 100%;
   margin-left: 25px;
- 
-  
   border-radius: 5px;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
-
   margin-bottom: 40px;
   color: black;
+}
+.guest {
+  position: relative;
+  bottom: 50px;
 }
 
 .property-box {
@@ -1342,7 +1592,6 @@ p {
   height: 550px;
   position: relative;
   top: 500px;
-  
   border-radius: 5px;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
@@ -1356,7 +1605,6 @@ p {
   padding: 10px;
   color: black;
   font-family: 'Montserrat', sans-serif;
- 
   align-items: center;
 }
 
@@ -1373,6 +1621,10 @@ margin-top:auto;
 .property-details h2 span {
   margin-left: 5px;
 
+}
+.property-meta h2 {
+  position: relative;
+  bottom: 20px;
 }
 
 .property-meta {
