@@ -90,10 +90,38 @@ const ProfileView = () => {
   }
 };
 
+const handleApprove = async (value) => {
+  try {
+    if (!value || !value.uuid) {
+      throw new Error("Invalid selected user");
+    } else {
+      const response = await axios.patch(
+        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,  
+        { status: "UNAVAILABLE" },
+
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': '*',
+            'ngrok-skip-browser-warning':  'true'
+          },},
+      );
+      toast.success("Property approved successfully");
+     
+      window.location.reload(); // Refresh the website
+    }
+  } catch (error) {
+    toast.error("Failed to approve property");
+    console.error("Error approving property:", error);
+  }
+};
+
+
+
   
   
 
-  
 
   useEffect(() => {
     if (user) {

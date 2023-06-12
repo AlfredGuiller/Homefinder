@@ -61,14 +61,16 @@ useEffect(() => {
         throw new Error("Invalid selected user");
       } else {
         const response = await axios.patch(
-          `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,  {
+          `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,  
+          { status: "approved" },
+
+          {
             headers: {
               'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json',
               'Access-Control-Allow-Methods': '*',
               'ngrok-skip-browser-warning':  'true'
             },},
-          { status: "approved" }
         );
         toast.success("Property approved successfully");
         closeModal();
