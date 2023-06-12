@@ -28,8 +28,6 @@ const [selectedAmenities, setSelectedAmenities] = useState([]);
 
 
 
-
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };

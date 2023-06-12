@@ -18,7 +18,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://9c92-136-158-25-84.ngrok-free.app/v1/test/User-dash"
+          "https://3c11-64-224-97-221.ngrok-free.app/v1/test/User-dash"
         );
         setUsers(response.data);
       } catch (error) {

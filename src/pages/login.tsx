@@ -20,7 +20,7 @@ const ProfileIcon = () => {
     }
   
     try {
-      const response = await fetch(`https://9c92-136-158-25-84.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
+      const response = await fetch(`https://c868-136-158-25-84.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const ProfileIcon = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://9c92-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
+      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
       const data = await response.json();
       setUser(data[0]); // Assuming the response contains a single user document
     } catch (error) {
