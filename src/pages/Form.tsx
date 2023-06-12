@@ -3,16 +3,19 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 import Header from './headerlogin';
 
 
 
 const ApartmentForm = () => {
+  const [startdate, setStartdate] = useState('');
+  const [enddate, setEnddate] = useState('');
   const [address, setAddress] = useState('');
-
   const [landmark, setLandmark] = useState('');
   const [bedrooms, setBedrooms] = useState('');
   const [bathrooms, setBathrooms] = useState('');
+  const [person, setPerson] = useState('');
   const [price, setPrice] = useState('');
   const [files, setFiles] = useState([]);
   const [applianceAmenities, setApplianceAmenities] = useState('');
@@ -21,32 +24,31 @@ const ApartmentForm = () => {
   const [description, setDescription] = useState('');
   const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
   const [propertyType, setPropertyType] = useState('');
-const [paymentMode, setPaymentMode] = useState('');
-
-const [user, setUser] = useState(null);
-
+  const [paymentMode, setPaymentMode] = useState('');
+  const [numberdays, setNumberDays] = useState('');
+  const [user, setUser] = useState(null);
 
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching', { headers: {
+    const response = await fetch('http://localhost:3001/v1/test/User-fetching', { headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Methods': '*',
       'ngrok-skip-browser-warning':  'true'}
     });
     const data = await response.json();
-    setUser(data[0]); // Assuming the response contains a single user document
+    setUser(data[0]); 
   } catch (error) {
     console.error('Failed to fetch user data:', error);
   }
 };
-    const handleChange = (event) => {
-      setDescription(event.target.value);
+    const handleChange = (event:any) => {
+    setDescription(event.target.value);
     };
 
     useEffect(() => {
-      fetchUserData();
+    fetchUserData();
     }, []);
   
     const [Uploadedby, setUploadedby] = useState('');
@@ -57,120 +59,93 @@ const fetchUserData = async () => {
       }
     }, [user]);
 
- 
-  const citiesInPhilippines = [
-    'Alaminos City',
-    'Angeles City',
-    'Antipolo City',
-    'Bacolod City',
-    'Bago City',
-    'Baguio City',
-    'Balanga City',
-    'Bais City',
-    'Batangas City',
-    'Bayawan City',
-    'Baybay City',
-    'Biñan City',
-    'Bislig City',
-    'Borongan City',
-    'Butuan City',
-    'Cabadbaran City',
-    'Cagayan de Oro City',
-    'Calamba City',
-    'Calapan City',
-    'Calbayog City',
-    'Caloocan City',
-    'Cabanatuan City',
-    'Cadiz City',
-    'Cagayan de Oro City',
-    'Calamba City',
-    'Calapan City',
-    'Calbayog City',
-    'Caloocan City',
-    'Catbalogan City',
-    'Dagupan City',
-    'Dumaguete City',
-    'El Salvador City',
-    'Escalante City',
-    'Gapan City',
-    'General Santos City',
-    'Gingoog City',
-    'Himamaylan City',
-    'Iligan City',
-    'Kabankalan City',
-    'Koronadal City',
-    'La Carlota City',
-    'Las Piñas City',
-    'Lipa City',
-    'Lucena City',
-    'Mabalacat City',
-    'Makati City',
-    'Malabon City',
-    'Malolos City',
-    'Mandaluyong City',
-    'Manila City',
-    'Marikina City',
-    'Meycauayan City',
-    'Muntinlupa City',
-    'Muñoz City',
-    'Navotas City',
-    'Nueva Ecija City',
-    'Oroquieta City',
-    'Ozamiz City',
-    'Palayan City',
-    'Pampanga City',
-    'Panabo City',
-    'Parañaque City',
-    'Pasay City',
-    'Pasig City',
-    'Pateros City',
-    'Puerto Princesa City',
-    'Quezon City',
-    'Roxas City',
-    'Sagay City',
-    'San Carlos City',
-    'San Fernando City',
-    'San Jose City',
-    'San Juan City',
-    'San Pablo City',
-    'San Pedro City',
-    'San Pedro City',
-    'San Pablo City',
-    'Santa Cruz City',
-    'Santa Rosa City',
-    'Sorsogon City',
-    'Surigao City',
-    'Taanay City',
-    'Tacloban City',
-    'Tacurong City',
-    'Taguig City',
-    'Talisay City',
-    'Tanauan City',
-    'Tangub City',
-    'Tanjay City',
-    'Tayabas City',
-    'Urdaneta City',
-    'Valencia City',
-    'Valenzuela City',
-    'Victorias City',
-    'Zamboanga City',
+
+    const citiesInPhilippines = [
+      'Caloocan City',
+      'Las Piñas City',
+      'Makati City',
+      'Malabon City',
+      'Mandaluyong City',
+      'Manila City',
+      'Marikina City',
+      'Muntinlupa City',
+      'Navotas City',
+      'Parañaque City',
+      'Pasay City',
+      'Pasig City',
+      'Pateros City',
+      'Quezon City',
+      'San Juan City',
+      'Taguig City',
+      'Valenzuela City',
+      ];
+
+  const property = [
+    'House for rent',
+    'House for sale',
+    'Apartment',
+    'Condominium',
+    'Townhouse',
+    'Duplex',
+    'Villa',
+    'Cottage',
+    'Bungalow',
+    'Farmhouse',
+    'Penthouse',
+    'Loft',
+    'Studio',
+    'Dormitory',
+    'Mobile home',
+    'Ranch',
+    'Chalet',
+    'Manor',
+    'Castle',
+    'Beach house',
+    'Log cabin',
+    'Treehouse',
+    'Houseboat',
+    'Yurt',
+    'Igloo',
+    'Tent',
+    'Warehouse conversion',
+    'Commercial property',
+    'Office space',
+    'Retail space',
+    'Industrial property',
   ];
 
-  const  property = [
-
-    'For Sale',
-    'For Rent',
-
-  ];
-
-  const  payment = [
-
+  const payment = [
     'Per Month',
+    'Per Week',
     'Per Year',
-
+    'Lump Sum',
+    'Installments',
+    'Bi-monthly',
+    'Quarterly',
+    'Bi-annually',
+    'N/A',
+  
   ];
 
 
+  const stay = [
+    'N/A',
+    '1 day',
+    '2 days',
+    '3 days',
+    '4 days',
+    '5 days',
+    '6 days',
+    '1 week',
+    '2 weeks',
+    '1 month',
+    '2 months',
+    '3 months',
+    '6 months',
+    '1 year',
+
+  ];
+  
   const handlePriceChange = (e) => {
     const inputPrice = e.target.value;
   
@@ -188,7 +163,6 @@ const fetchUserData = async () => {
     setPrice(formattedPrice);
   };
   
-  
   const fileInputRef = useRef(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -205,6 +179,10 @@ const fetchUserData = async () => {
     formData.append('paymentMode', paymentMode);
     formData.append('description', description || 'No description');
     formData.append('Uploadedby', Uploadedby); 
+    formData.append('enddate', enddate);
+    formData.append('startdate', startdate);
+    formData.append('person', person); 
+    formData.append('numberdays', numberdays); 
     files.forEach((file, index) => {
       formData.append(`file${index + 1}`, file);
     });
@@ -214,7 +192,7 @@ const fetchUserData = async () => {
         body: formData,
         headers: {
           'Access-Control-Allow-Origin': '*',
-          
+          'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
           'ngrok-skip-browser-warning':  'true'},
       });
@@ -228,6 +206,7 @@ const fetchUserData = async () => {
         setBedrooms('');
         setBathrooms('');
         setPrice('');
+        setPerson('');
         setApplianceAmenities('');
         setSecurityAmenities('');
         setFacilityAmenities('');
@@ -321,11 +300,7 @@ const fetchUserData = async () => {
     
       <ToastContainer />
       <form id="signup-form" className="forms" onSubmit={handleSubmit} encType="multipart/form-data">
-
-
         <div className="flexs"> 
-
-
         <section> 
 
 <p className="titles">List your apartment</p>
@@ -342,6 +317,7 @@ const fetchUserData = async () => {
   onChange={(e) => setAddress(e.target.value)}
 >
   <option value=""></option>
+
   {citiesInPhilippines.map((city, index) => (
     <option key={index} value={city}>
       {city}
@@ -350,6 +326,7 @@ const fetchUserData = async () => {
 </select>
   <span>Select a city</span>
 </label>
+
 <label>
   <input
     required
@@ -403,7 +380,11 @@ const fetchUserData = async () => {
 </label>
 
 
+
+
 <div className="flexs">
+
+
   <label>
     <input
       required
@@ -416,6 +397,7 @@ const fetchUserData = async () => {
     />
     <span>Number of Bedroom</span>
   </label>
+  
   <label>
     <input
       required
@@ -429,12 +411,27 @@ const fetchUserData = async () => {
     <span>Number of Bathroom</span>
   </label>
 
+</div>
+<div className="flexs"> 
+<label>
+    <input
+      required
+      placeholder=""
+      name="person"
+      type="number"
+      className="inputs"
+      value={person}
+      onChange={(e) => setPerson(e.target.value)}
+    />
+    <span>Max of person allowed</span>
+  </label>
+
   <label>
   <input
       required
       placeholder=""
       name="price"
-      type="text" // Change the input type to "text"
+      type="text" 
       className="inputs"
       value={price}
       onChange={handlePriceChange}
@@ -444,6 +441,24 @@ const fetchUserData = async () => {
 </div>
 <div> 
   
+<label>
+<select
+  required
+  name="numberdays"
+  className="inputs"
+  defaultValue={numberdays}
+  onChange={(e) => setNumberDays(e.target.value)}
+>
+  <option value=""></option>
+  {stay.map((stay, index) => (
+    <option key={index} value={stay}>
+      {stay}
+    </option>
+  ))}
+</select>
+  <span>For how many days (Select N/A if your property is for sale or for rent)</span>
+</label>
+
 
 
 
@@ -522,6 +537,31 @@ onChange={handleChange}
 />
 </div>
     </label>
+    <h3 className="date">Select start date</h3>
+    <label>
+  <input
+    required
+    placeholder=""
+    name="startdate"
+    type="date"
+    className="inputs"
+    value={startdate}
+    onChange={(e) => setStartdate(e.target.value)}
+  />
+  
+</label>
+<h3 className="date">Select end date</h3>
+<label>
+  <input
+    required
+    placeholder=""
+    name="enddate"
+    type="date"
+    className="inputs"
+    value={enddate}
+    onChange={(e) => setEnddate(e.target.value)}
+  />
+</label>
 
     <label>
   <input
@@ -532,13 +572,8 @@ onChange={handleChange}
     className="input-field"
   />
 </label>
-
-  
 </section>
         </div>
-       
-
-
         {showAmenitiesModal && (
             <div className="modal" style={{ display: 'block' }}>
               <div className="modal-content" style={{ width: '700px' }}>
@@ -665,7 +700,7 @@ onChange={handleChange}
 
                 </div>
               
-               
+              
                 <h3>Facility Amenities</h3>
                 <div className="flexsecu">
                 <label>
@@ -695,12 +730,8 @@ onChange={handleChange}
                   />
                   Free street parking
                 </label>
-
-                
-              
-
                 </div>
-               
+              
                 <button className="modal-close" onClick={toggleAmenitiesModal}>
                   Close
                 </button>
@@ -729,9 +760,9 @@ onChange={handleChange}
 }
 
 .big-textarea {
-  height: 150px; /* Adjust the height as desired */
+  height: 150px; 
   width: 500px;
-  resize: vertical; /* Allow vertical resizing of the textarea */
+  resize: vertical; 
 }
 
     .appliance-amenities h3 {
@@ -825,14 +856,12 @@ onChange={handleChange}
 
     .selected-amenities {
       margin-top: 10px;
-     
       color: white;
       flex-wrap: wrap;
     }
     .selected-amenities h3{
       color: black;
     }
-
     .selected-amenity {
       background-color: black;
       border-radius: 4px;
@@ -841,9 +870,7 @@ onChange={handleChange}
       margin-bottom: 5px;
     }
     
-
     /* FORMSS */
-
     small {
       color: black;
     }
@@ -1003,14 +1030,14 @@ onChange={handleChange}
       padding: 0;
       font-size: inherit;
       font-family: inherit;
-     }
-     
-     button.learn-more {
+    }
+    
+    button.learn-more {
       width: 12rem;
       height: auto;
-     }
-     
-     button.learn-more .circle {
+    }
+    
+    button.learn-more .circle {
       transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
       position: relative;
       display: block;
@@ -1019,26 +1046,26 @@ onChange={handleChange}
       height: 3rem;
       background: #282936;
       border-radius: 1.625rem;
-     }
-     
-     button.learn-more .circle .icon {
+    }
+    
+    button.learn-more .circle .icon {
       transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
       position: absolute;
       top: 0;
       bottom: 0;
       margin: auto;
       background: #fff;
-     }
-     
-     button.learn-more .circle .icon.arrow {
+    }
+    
+    button.learn-more .circle .icon.arrow {
       transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
       left: 0.625rem;
       width: 1.125rem;
       height: 0.125rem;
       background: none;
-     }
-     
-     button.learn-more .circle .icon.arrow::before {
+    }
+    
+    button.learn-more .circle .icon.arrow::before {
       position: absolute;
       content: "";
       top: -0.29rem;
@@ -1048,9 +1075,9 @@ onChange={handleChange}
       border-top: 0.125rem solid #fff;
       border-right: 0.125rem solid #fff;
       transform: rotate(45deg);
-     }
-     
-     button.learn-more .button-text {
+    }
+    
+    button.learn-more .button-text {
       transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
       position: absolute;
       width: 100%;
@@ -1065,20 +1092,20 @@ onChange={handleChange}
       line-height: 1.6;
       text-align: center;
       text-transform: uppercase;
-     }
-     
-     button:hover .circle {
+    }
+    
+    button:hover .circle {
       width:  250px;
-     }
-     
-     button:hover .circle .icon.arrow {
+    }
+    
+    button:hover .circle .icon.arrow {
       background: #fff;
       transform: translate(1rem, 0);
-     }
-     
-     button:hover .button-text {
+    }
+    
+    button:hover .button-text {
       color: #fff;
-     }
+    }
     
   `}</style>
 </form>
