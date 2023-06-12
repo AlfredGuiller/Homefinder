@@ -21,14 +21,14 @@ useEffect(() => {
   const fetchPendingProperties = async () => {
     try {
       const response = await axios.get(
-        "https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING",  {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Methods': '*',
-            'ngrok-skip-browser-warning':  'true'
-          },} ); 
-    
+        "https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING,UNAVAILABLE", { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  true
+        },}
+      
+      );
       setPending(response.data);
     } catch (error) {
       console.error("Error fetching pending properties:", error);
@@ -61,18 +61,41 @@ useEffect(() => {
         throw new Error("Invalid selected user");
       } else {
         const response = await axios.patch(
-          `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,  
-          { status: "approved" },
-
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Methods': '*',
-              'ngrok-skip-browser-warning':  'true'
-            },},
+          `http://localhost:3001/v1/test/update/property/${value.uuid}`,
+          { status: "approved" },{
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': '*',
+            'ngrok-skip-browser-warning': 'true'
+          }}
         );
         toast.success("Property approved successfully");
+        closeModal();
+        window.location.reload(); // Refresh the website
+      }
+    } catch (error) {
+      toast.error("Failed to approve property");
+      console.error("Error approving property:", error);
+    }
+  };
+
+  const handleDecline = async (value) => {
+    try {
+      if (!value || !value.uuid) {
+        throw new Error("Invalid selected user");
+      } else {
+        const response = await axios.patch(
+          `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,
+          { status: "Declined" }, {
+           headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': '*',
+            'ngrok-skip-browser-warning':  true
+          }}
+        );
+        toast.success("Property declined successfully");
         closeModal();
         window.location.reload(); // Refresh the website
       }
@@ -110,12 +133,7 @@ useEffect(() => {
               <div className="w-full m-auto p-4 border rounded-lg bg-white overflow-y-auto h-[38em] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
                 <div className="flex">
                   <div>
-                    <button
-                      className={styles.addnewbtn}
-                      onClick={() => openModalAddd()}
-                    >
-                      + Add New
-                    </button>
+                   
                   </div>
                   <div>
                     <input
@@ -128,7 +146,8 @@ useEffect(() => {
                   </div>
                 </div>
                 <div className="my-3 p-2 grid md:grid-cols-5 sm:grid-cols-3 grid-cols-5 items-center justify-between cursor-pointer">
-                  <span className="ms-4 col-span-1">City</span>
+                  <span className="ms-4 col-span-1">Status</span>
+                  
                   <span className="sm:text-left text-right col-span-2">
                     Address
                   </span>
@@ -140,7 +159,7 @@ useEffect(() => {
                 </div>
                 <ul>
                   {pending.filter((order) => {
-                    const address = order.address;
+                    const address = order.status;
                     return address
                       .toLowerCase()
                       .includes(searchQuery.toLowerCase());
@@ -150,7 +169,7 @@ useEffect(() => {
                       className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-5 sm:grid-cols-3 grid-cols-5 items-center"
                     >
                       <div className="flex items-center justify-start">
-                        <p className="pl-4">{order.address}</p>
+                        <p className="pl-4">{order.status}</p>
                       </div>
                       <div className="flex items-center justify-start col-span-2">
                         <p className="">{order.landmark}</p>
@@ -192,6 +211,7 @@ useEffect(() => {
                     </label>
                     <p className="mb-2">{selectedUser.landmark}
                     </p>
+                    
                   </div>
                   <div className="col-span-8 border-b-2 border-solid border-gray-300">
                     <label className="font-medium text-l col-span-1">
@@ -261,6 +281,9 @@ useEffect(() => {
                   </button>
                   <button className={styles.addnewbtn} onClick={() => handleApprove(selectedUser)}>
                     Approve
+                    </button>
+                    <button className={styles.addnewbtn} onClick={() => handleDecline(selectedUser)}>
+                    Decline
                     </button>
                 </div>
               </>
