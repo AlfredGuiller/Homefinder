@@ -42,6 +42,11 @@ export default function SideBar() {
               <a className={styles.sidebar_a}>Approved Properties</a>
             </Link>
           </li>
+          <li className={styles.sidebar_li}>
+            <Link href="/dashboard/declined-properties" passHref legacyBehavior>
+              <a className={styles.sidebar_a}>Declined Properties</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </>
