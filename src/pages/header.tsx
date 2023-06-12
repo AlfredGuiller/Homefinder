@@ -119,14 +119,14 @@ const Navbar = () => {
       // Redirect to appropriate landing page based on user type
       if (data.userType === "landlord") {
         // Redirect to landlord landing page
-        window.location.replace("http://localhost:3000/landlord");
+        window.location.replace("../landlord");
       } else if (data.userType === "tenant") {
         // Redirect to tenant landing page
-        window.location.replace("http://localhost:3000/tenant");
+        window.location.replace("../tenant");
       }
       else if (data.userType === "admin") {
         // Redirect to tenant landing page
-        window.location.replace("http://localhost:3000/dashboard");
+        window.location.replace("../dashboard");
       }
     } else  {
       alert(data.message);
