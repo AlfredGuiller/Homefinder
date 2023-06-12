@@ -25,8 +25,14 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://c868-136-158-25-84.ngrok-free.app/v1/test/User-dash"
-        );
+          "https://c868-136-158-25-84.ngrok-free.app/v1/test/User-dash",  {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Methods': '*',
+              'ngrok-skip-browser-warning':  'true'
+            },} ); 
+      
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -47,10 +53,14 @@ export default function Dashboard() {
     data.age = parseInt(formData.get("age"));
 
     try {
-      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/add/user', {
+      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/add/user',  {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'
+          
         },
         body: JSON.stringify(data)
       });
@@ -83,7 +93,14 @@ export default function Dashboard() {
   
     try {
       const response = await axios.patch(
-        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/user/${selectedUser.id}`,
+        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/user/${selectedUser.id}`, { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  true
+        }
+      },
+    
         updatedUser
       );
   

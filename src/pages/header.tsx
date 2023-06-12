@@ -73,7 +73,13 @@ const Navbar = () => {
       const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/add/user', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+
+          'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': '*',
+      'ngrok-skip-browser-warning':  'true'
+
+        
         },
         body: JSON.stringify(data)
       });
@@ -107,7 +113,13 @@ const Navbar = () => {
 
     const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/login/user', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': '*',
+      'ngrok-skip-browser-warning':  'true'
+         
+      },
       body: JSON.stringify({ email, password })
     });
 

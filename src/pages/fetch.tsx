@@ -15,7 +15,12 @@ export default function Contacts({ contacts }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3008/v1/test/contacts');
+  const res = await fetch('http://localhost:3008/v1/test/contacts', { headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': '*',
+    'ngrok-skip-browser-warning':  'true'}
+  });
   const contacts = await res.json();
   return { props: { contacts } };
 }

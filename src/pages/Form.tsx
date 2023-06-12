@@ -29,7 +29,12 @@ const [user, setUser] = useState(null);
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
+    const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching', { headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': '*',
+      'ngrok-skip-browser-warning':  'true'}
+    });
     const data = await response.json();
     setUser(data[0]); // Assuming the response contains a single user document
   } catch (error) {
@@ -205,6 +210,11 @@ const fetchUserData = async () => {
     });
     try {
       const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/add/property', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'},
         method: 'POST',
         body: formData,
       });

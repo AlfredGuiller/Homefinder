@@ -50,7 +50,15 @@ export default function Dashboard() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
+      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching', { headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'ngrok-skip-browser-warning':  'true'
+      }
+    
+    }
+    );
       const data = await response.json();
       setUser(data[0]); // Assuming the response contains a single user document
     } catch (error) {
@@ -68,7 +76,11 @@ export default function Dashboard() {
       const response = await fetch(`https://c868-136-158-25-84.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'ngrok-skip-browser-warning':  'true'
+          
         },
       });
       const data = await response.json();
@@ -86,16 +98,36 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const propertyResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/property");
+        const propertyResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/property", { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'}
+        });
         const propertyData = await propertyResponse.json();
 
-        const userResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/User-dash");
+        const userResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/User-dash", { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'}
+        });
         const userData = await userResponse.json();
 
-        const pendingResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING");
+        const pendingResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING", { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'}
+        });
         const pendingData = await pendingResponse.json();
 
-        const approvedResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/APPROVED");
+        const approvedResponse = await fetch("https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/APPROVED", { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'}
+        });
         const approvedData = await approvedResponse.json();
 
         const cities = propertyData.map((apartment) => apartment.address);

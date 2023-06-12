@@ -23,7 +23,11 @@ const ProfileIcon = () => {
       const response = await fetch(`https://c868-136-158-25-84.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
         method: 'POST',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  true
+         
         },
       });
       const data = await response.json();

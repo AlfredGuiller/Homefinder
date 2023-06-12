@@ -21,8 +21,14 @@ useEffect(() => {
   const fetchPendingProperties = async () => {
     try {
       const response = await axios.get(
-        "https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING"
-      );
+        "https://c868-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING",  {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': '*',
+            'ngrok-skip-browser-warning':  'true'
+          },} ); 
+    
       setPending(response.data);
     } catch (error) {
       console.error("Error fetching pending properties:", error);
@@ -55,7 +61,13 @@ useEffect(() => {
         throw new Error("Invalid selected user");
       } else {
         const response = await axios.patch(
-          `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,
+          `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,  {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Methods': '*',
+              'ngrok-skip-browser-warning':  'true'
+            },},
           { status: "approved" }
         );
         toast.success("Property approved successfully");

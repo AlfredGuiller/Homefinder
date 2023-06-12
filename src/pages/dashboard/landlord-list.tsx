@@ -18,8 +18,14 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://3c11-64-224-97-221.ngrok-free.app/v1/test/User-dash"
-        );
+          "https://3c11-64-224-97-221.ngrok-free.app/v1/test/User-dash",  {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Methods': '*',
+              'ngrok-skip-browser-warning':  'true'
+            },} ); 
+      
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);

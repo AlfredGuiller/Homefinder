@@ -23,7 +23,12 @@ const ProfileView = () => {
 
   const getPropertyListing = async () => {
     try {
-      const response = await axios.get(`https://c868-136-158-25-84.ngrok-free.app/v1/test/property/${encodeURIComponent(user.email)}`);
+      const response = await axios.get(`https://c868-136-158-25-84.ngrok-free.app/v1/test/property/${encodeURIComponent(user.email)}`, { headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'ngrok-skip-browser-warning':  true}
+      });
       return response.data;
     } catch (error) {
       console.error('Failed to fetch property listings:', error);
@@ -37,7 +42,12 @@ const ProfileView = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
+      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching', { headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Methods': '*',
+        'ngrok-skip-browser-warning':  'true'}
+      });
       const data = await response.json();
       setUser(data[0]); // Assuming the response contains a single user document
       setUpdatedUser(data[0]); // Set the initial updated user data
@@ -54,7 +64,13 @@ const ProfileView = () => {
       throw new Error("Invalid selected user");
     } else {
       const response = await axios.patch(
-        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`,
+        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`,{ headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  true
+        }, },
+        
         {
           firstName: updatedUser.firstName,
           lastName: updatedUser.lastName,
