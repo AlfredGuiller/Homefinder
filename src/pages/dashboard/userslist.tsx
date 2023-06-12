@@ -25,7 +25,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/v1/test/User-dash"
+          "https://9c92-136-158-25-84.ngrok-free.app/v1/test/User-dash"
         );
         setUsers(response.data);
       } catch (error) {
@@ -47,7 +47,7 @@ export default function Dashboard() {
     data.age = parseInt(formData.get("age"));
 
     try {
-      const response = await fetch('http://localhost:3001/v1/test/add/user', {
+      const response = await fetch('https://9c92-136-158-25-84.ngrok-free.app/v1/test/add/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ export default function Dashboard() {
   
     try {
       const response = await axios.patch(
-        `http://localhost:3001/v1/test/update/user/${selectedUser.id}`,
+        `https://9c92-136-158-25-84.ngrok-free.app/v1/test/update/user/${selectedUser.id}`,
         updatedUser
       );
   

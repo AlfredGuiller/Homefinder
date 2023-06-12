@@ -23,7 +23,7 @@ const ProfileView = () => {
 
   const getPropertyListing = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/v1/test/property/${encodeURIComponent(user.email)}`);
+      const response = await axios.get(`https://9c92-136-158-25-84.ngrok-free.app/v1/test/property/${encodeURIComponent(user.email)}`);
       return response.data;
     } catch (error) {
       console.error('Failed to fetch property listings:', error);
@@ -37,7 +37,7 @@ const ProfileView = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/v1/test/User-fetching');
+      const response = await fetch('https://9c92-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
       const data = await response.json();
       setUser(data[0]); // Assuming the response contains a single user document
       setUpdatedUser(data[0]); // Set the initial updated user data
@@ -54,7 +54,7 @@ const ProfileView = () => {
       throw new Error("Invalid selected user");
     } else {
       const response = await axios.patch(
-        `http://localhost:3001/v1/test/update/user/${updatedUser.uuid}`,
+        `https://9c92-136-158-25-84.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`,
         {
           firstName: updatedUser.firstName,
           lastName: updatedUser.lastName,

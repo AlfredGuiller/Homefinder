@@ -29,7 +29,7 @@ const [user, setUser] = useState(null);
 
 const fetchUserData = async () => {
   try {
-    const response = await fetch('http://localhost:3001/v1/test/User-fetching');
+    const response = await fetch('https://9c92-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
     const data = await response.json();
     setUser(data[0]); // Assuming the response contains a single user document
   } catch (error) {
@@ -204,7 +204,7 @@ const fetchUserData = async () => {
       formData.append(`file${index + 1}`, file);
     });
     try {
-      const response = await fetch('http://localhost:3001/v1/test/add/property', {
+      const response = await fetch('https://9c92-136-158-25-84.ngrok-free.app/v1/test/add/property', {
         method: 'POST',
         body: formData,
       });

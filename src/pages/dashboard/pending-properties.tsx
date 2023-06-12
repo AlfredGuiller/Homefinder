@@ -21,7 +21,7 @@ useEffect(() => {
   const fetchPendingProperties = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/v1/test/property-fetching/PENDING"
+        "https://9c92-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING"
       );
       setPending(response.data);
     } catch (error) {
@@ -55,7 +55,7 @@ useEffect(() => {
         throw new Error("Invalid selected user");
       } else {
         const response = await axios.patch(
-          `http://localhost:3001/v1/test/update/property/${value.uuid}`,
+          `https://9c92-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,
           { status: "approved" }
         );
         toast.success("Property approved successfully");
