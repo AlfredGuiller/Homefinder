@@ -210,13 +210,13 @@ const fetchUserData = async () => {
     });
     try {
       const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/add/property', {
+        method: 'POST',
+        body: formData,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
           'ngrok-skip-browser-warning':  'true'},
-        method: 'POST',
-        body: formData,
       });
       const data = await response.json();
       if (response.ok) {
