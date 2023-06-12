@@ -192,7 +192,7 @@ const fetchUserData = async () => {
         body: formData,
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
+          
           'Access-Control-Allow-Methods': '*',
           'ngrok-skip-browser-warning':  'true'},
       });
