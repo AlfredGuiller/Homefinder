@@ -45,9 +45,15 @@ const ProfileIcon = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching');
+      const response = await fetch('https://c868-136-158-25-84.ngrok-free.app/v1/test/User-fetching', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  'true'
+        },} ); 
       const data = await response.json();
-      setUser(data[0]); // Assuming the response contains a single user document
+      setUser(data[0]);
     } catch (error) {
       console.error('Failed to fetch user data:', error);
     }
