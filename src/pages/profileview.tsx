@@ -63,14 +63,9 @@ const ProfileView = () => {
     if (!updatedUser || !updatedUser.uuid) {
       throw new Error("Invalid selected user");
     } else {
+
       const response = await axios.patch(
-        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`,{ headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Methods': '*',
-          'ngrok-skip-browser-warning':  true
-        }, },
-        
+        `https://c868-136-158-25-84.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`, 
         {
           firstName: updatedUser.firstName,
           lastName: updatedUser.lastName,
@@ -78,7 +73,13 @@ const ProfileView = () => {
           age: updatedUser.age,
           userType: updatedUser.userType,
           gender: updatedUser.gender
-        }
+        },
+        { headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Methods': '*',
+          'ngrok-skip-browser-warning':  true
+        }, },
       );
       toast.success("User updated successfully");
       window.location.reload(); 
