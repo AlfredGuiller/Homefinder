@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Header from './headerlogin';
 import Letter from './letterlogin';
-import { FcFilledFilter, FcHome, FcSalesPerformance, FcMultipleDevices, FcDepartment, FcDocument, FcWebcam, FcCalendar, FcFeedback } from "react-icons/fc";
+import { FcOk, FcHome, FcSalesPerformance, FcMultipleDevices, FcDepartment, FcDocument, FcWebcam, FcCalendar, FcFeedback } from "react-icons/fc";
+import { BsFillPersonPlusFill} from 'react-icons/bs'
 
 
 import axios from 'axios';
@@ -158,7 +159,7 @@ const handleApprove = async (value) => {
     return (
       <div className="property-details">
       <button onClick={handleBackToListing} className="back-button">
-        Back to profile dashboard
+        Back to Listing
       </button>
      
       <h2 className="property-address"><FcHome/>{selectedProperty.address}</h2>
@@ -173,18 +174,26 @@ const handleApprove = async (value) => {
           ))}
         </div>
       )}
-       <span className="property-price"> <FcSalesPerformance/> {selectedProperty.price}/{selectedProperty.paymentMode}</span>
-       <span className="property-price"> Property Type: {selectedProperty.propertyType}</span>
+        <span className="property-type"> {selectedProperty.propertyType}</span>
+         <span className="property-price">
+                  Price: {selectedProperty.price}
+                  {selectedProperty.paymentMode !== "N/A" && `/${selectedProperty.paymentMode}`}
+                  {selectedProperty.numberdays !== "N/A" && ` For ${selectedProperty.numberdays} `}
+                </span>
+     
        
        <div className="property-land">{selectedProperty.landmark}</div>
+
+       <span className="property-person">
+      <BsFillPersonPlusFill className="icon-bed"/> Maximum Guest{selectedProperty.person} 
+        </span>
 
        <span className="property-bed">
         <FaBed  className="icon-bed"/> {selectedProperty.numOfBedrooms} bedrooms
         </span>
 
-
       <div className="property-others">
-        <span className="property-bed">
+        <span className="property-bath">
           <FaBath className="icon-bath" /> {selectedProperty.numOfBathrooms} bathrooms
         </span>
         <div className="property-app">
@@ -219,17 +228,18 @@ const handleApprove = async (value) => {
             {selectedProperty.description}
         </div>
 
-<h3 className="button-name" onClick={() => handleApprove(selectedProperty)} >Change it to unavailable</h3>
+<h3  onClick={() => handleApprove(selectedProperty)}className="button-name" > <FcCalendar/>Change it ot Unavailable</h3>
 
 
- 
       </div>
+  
 
-    
     
       
       </div>
     )
+
+
   }
 
   return (
@@ -239,7 +249,7 @@ const handleApprove = async (value) => {
       <div className="profile-container">
         <div className="profile-details">
           <div className="profile-picture">
-            {/* Replace with your profile picture */}
+         
             <Image src="/maynard.jpg" alt="Profile Picture" width={150} height={150} />
           </div>
           <div className="profile-info">
@@ -250,7 +260,7 @@ const handleApprove = async (value) => {
                 <span className="stat-label">Usertype:</span>
                 <span className="stat-value">{user.userType}</span>
               </li>
-              {/* Add more list items for other user information */}
+          
             </ul>
 
  <form className="update-form" >
@@ -344,12 +354,12 @@ const handleApprove = async (value) => {
         </div>
       </div>
 
-      <div className="property-list">
-        {loading ? (
-          <div>Loading properties...</div>
-        ) : (
-          properties.map(property => (
-            <div key={property._id} className="property-box">
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="property-listing">
+          {properties.map(property => (
+            <div key={property._id} className="propertys-boxes">
               {property.imageUrls ? (
                 <div className="property-image">
                   <Carousel>
@@ -361,26 +371,47 @@ const handleApprove = async (value) => {
                   </Carousel>
                 </div>
               ) : null}
-              <h2 className="addressflex">
-                <FaMapMarkerAlt /> {property.address}
-              </h2>
+                <span className="verified">Status: {property.status}</span>
+            
               <div className="property-meta">
+              <h2 className="usertype">{property.propertyType}</h2>
+              <h3 className="addressflex">
+                <FaMapMarkerAlt /> {property.address} 
+              </h3>
+              <span className="guest">
+                  <BsFillPersonPlusFill /> Guests:{property.person} 
+                </span>
+              <div className="details">
+                
+                <div className="flexs">
                 <span>
                   <FaBed /> {property.numOfBedrooms} bedrooms
                 </span>
                 <span>
                   <FaBath /> {property.numOfBathrooms} bathrooms
                 </span>
-                <span>Price: {property.price}/{property.paymentMode}</span>
-                <span>Property Type: {property.propertyType}</span>
-                <span>Status: {property.status}</span>
+                  </div>
+                    <span>
+                  Price: {property.price}
+                  {property.paymentMode !== "N/A" && `/${property.paymentMode}`}
+                  {property.numberdays !== "N/A" && ` For ${property.numberdays} `}
+                </span>
+
+                <span>Starting: {property.startdate}</span>
+                <span>Until: {property.enddate}</span>
+                </div>
+              
+              
               </div>
-              <button onClick={() => handleViewDetails(property)} className="more-button">View More Details</button>
+              <div className="filter-buttonsnew">
+              <button onClick={() => handleViewDetails(property)} className="button-fil"><span> View More Details</span></button>
+
+                </div>
             </div>
-          ))
-        )}
-        <ToastContainer />
-      </div>
+          ))}
+          <ToastContainer />
+        </div>
+      )}
     </div>
   );
 };

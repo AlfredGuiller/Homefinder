@@ -643,23 +643,23 @@ const clearSignupForm = () => {
                 <span>
                   <FaBath /> {property.numOfBathrooms} bathrooms
                 </span>
-                   </div>
+                  </div>
                     <span>
                   Price: {property.price}
                   {property.paymentMode !== "N/A" && `/${property.paymentMode}`}
                   {property.numberdays !== "N/A" && ` For ${property.numberdays} `}
                 </span>
 
-                 <span>Starting: {property.startdate}</span>
+                <span>Starting: {property.startdate}</span>
                 <span>Until: {property.enddate}</span>
-                 </div>
+                </div>
               
-             
+              
               </div>
               <div className="filter-buttonsnew">
               <button onClick={() => handleViewDetails(property)} className="button-fil"><span> View More Details</span></button>
 
-                 </div>
+                </div>
             </div>
           ))}
           <ToastContainer />
