@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { fname, lname, number, email, message } = req.body;
+    const { fname, lname, number, email, selectedDate } = req.body;
 
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -20,20 +20,20 @@ export default async function handler(req, res) {
       await transporter.sendMail({
         from: 'lambino252@gmail.com',
         to: 'lambino252@gmail.com',
-        subject: 'New Message from Home Finder',
+        subject: 'New Visit Tour Request',
         html: `
-        <h1>New Message from Home Finder</h1>
-        <p>You have received a new message from a potential home finder:</p>
+        <h1>New Visit Tour Request</h1>
+        <p>You have received a new visit tour request:</p>
 
         <h2>Contact Details:</h2>
-        <p><strong>Name:</strong> ${fname} ${lname} </p>
+        <p><strong>Name:</strong> ${fname} ${lname}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Email:</strong> ${number}</p>
+        <p><strong>Phone Number:</strong> ${number}</p>
 
-        <h2>Message:</h2>
-        <p>${message}</p>
+        <h2>Selected Date:</h2>
+        <h3>${selectedDate}</h3>
 
-        <p>Please respond promptly to assist the individual in finding a suitable home.</p>
+        <p>Please contact the individual to confirm the visit tour.</p>
 
         <p>Best regards,<br>Home Finder Team</p>`
       });

@@ -25,8 +25,78 @@ const PropertyListing = () => {
   const [bedroomsFilter, setBedroomsFilter] = useState('');
 const [bathroomsFilter, setBathroomsFilter] = useState('');
 const [selectedAmenities, setSelectedAmenities] = useState([]);
+const [message, setMessage] = useState('');
+const [fname, setFname] = useState('');
+const [lname, setLname] = useState('');
+const [email, setEmail] = useState('');
+const [number, setNumber] = useState('');
 
 
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    fname,
+    lname,
+    email,
+    number,
+    message
+  };
+  
+  const response = await fetch('/api/sendEmail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  });
+  
+  if (response.ok) {
+    alert('Email sent successfully!');
+    
+    setFname('');
+    setLname('');
+    setEmail('');
+    setNumber('');
+    setMessage('');
+  } else {
+    alert('Error sending email. Please try again later.');
+  }
+};
+
+const handleSubmitSched = async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    fname,
+    lname,
+    email,
+    number,
+    selectedDate,
+  };
+  
+  const response = await fetch('/api/sendEmailsched', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  });
+  
+  if (response.ok) {
+    alert('Email sent successfully!');
+    
+    setFname('');
+    setLname('');
+    setEmail('');
+    setNumber('');
+    setSelectedProperty('');
+  } else {
+    alert('Error sending email. Please try again later.');
+  }
+};
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -225,7 +295,7 @@ const clearSignupForm = () => {
        <div className="property-land">{selectedProperty.landmark}</div>
 
        <span className="property-person">
-      <BsFillPersonPlusFill className="icon-bed"/> Maximum Guest{selectedProperty.person} 
+      <BsFillPersonPlusFill className="icon-bed"/> Max Guest: {selectedProperty.person} 
         </span>
 
        <span className="property-bed">
@@ -278,7 +348,7 @@ const clearSignupForm = () => {
             <span className="close" onClick={Requestmodal}>
             &times;
             </span>
-            <form id="signup-form" className="forms" >
+            <form id="signup-form" className="forms" onSubmit={handleSubmit} >
             
             <p className="titles">Ready to apply?</p>
         <p className="messages">Enter your contact details, and we'll let the rental manager know you want to submit an application. If they're interested, they'll contact you with next steps.</p>
@@ -287,6 +357,9 @@ const clearSignupForm = () => {
         <div className="big-placeholder">
               <textarea
               name="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              
               className="request-modal"
               placeholder="Why would you like to apply for this property?"
               />
@@ -295,29 +368,33 @@ const clearSignupForm = () => {
         <div className="flexs">
           
         <label>
-            <input required placeholder="" name="firstname"type="text" className="inputs" />
+            <input required placeholder=""  value={fname}
+          onChange={(e) => setFname(e.target.value)} name="firstname"type="text" className="inputs" />
             <span>Firstname</span>
           </label>
   
           <label>
-          <input required placeholder="" name="lastname" type="text" className="inputs" />
+          <input required placeholder=""  value={lname}
+          onChange={(e) => setLname(e.target.value)} name="lastname" type="text" className="inputs" />
             <span>Lastname</span>
           </label>
         </div>
   
         <label>
-          <input required placeholder="" name="email"type="email" className="inputs" />
+          <input required placeholder=""  value={email}
+          onChange={(e) => setEmail(e.target.value)}name="email"type="email" className="inputs" />
           <span>Email</span>
         </label>
   
         <label>
         <label htmlFor="phoneNumber">Phone Number (Philippines)</label>
         <input
+         value={number}
+         onChange={(e) => setNumber(e.target.value)}
           type="tel"
           id="phoneNumber"
           name="phoneNumber"
           placeholder="e.g., 09XX-XXX-XXXX"
-          pattern="^\d{4}-\d{3}-\d{4}$"
           maxLength="11"
           required
         />
@@ -337,30 +414,39 @@ const clearSignupForm = () => {
           <span className="close" onClick={handleSignupModalClose}>
             &times;
           </span>
-          <form id="signup-form" className="forms" >
+          <form id="signup-form" className="forms"  onSubmit={handleSubmitSched}>
           
           <p className="titles">Schedule your visit</p>
       <p className="messages">The property manager or landlord may use this information to reach out to confirm your tour.</p>
       <div className="flexs">
         <label>
-          <input required placeholder="" name="firstname"type="text" className="inputs" />
+          <input required placeholder=""  value={fname}
+              onChange={(e) => setFname(e.target.value)}
+              name="firstname"type="text" className="inputs" />
           <span>Firstname</span>
         </label>
 
         <label>
-          <input required placeholder="" name="lastname" type="text" className="inputs" />
+          <input required placeholder=""  value={lname}
+              onChange={(e) => setLname(e.target.value)}
+               name="lastname" type="text" className="inputs" />
           <span>Lastname</span>
         </label>
       </div>
 
       <label>
-        <input required placeholder="" name="email"type="email" className="inputs" />
+        <input required placeholder=""  value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"type="email" className="inputs" />
         <span>Email</span>
       </label>
 
       <label>
       <label htmlFor="phoneNumber">Phone Number (Philippines)</label>
       <input
+       value={number}
+       onChange={(e) => setNumber(e.target.value)}
+
     
         type="tel"
         id="phoneNumber"
@@ -375,6 +461,9 @@ const clearSignupForm = () => {
       <div>
       <h2>Select Date and Time to visit</h2>
       <DatePicker
+       
+      
+       
         selected={selectedDate}
         onChange={handleDateChange}
         showTimeSelect

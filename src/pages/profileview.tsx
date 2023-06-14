@@ -185,7 +185,7 @@ const handleApprove = async (value) => {
        <div className="property-land">{selectedProperty.landmark}</div>
 
        <span className="property-person">
-      <BsFillPersonPlusFill className="icon-bed"/> Maximum Guest{selectedProperty.person} 
+      <BsFillPersonPlusFill className="icon-bed"/> Max Guest: {selectedProperty.person} 
         </span>
 
        <span className="property-bed">
