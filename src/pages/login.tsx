@@ -20,7 +20,7 @@ const ProfileIcon = () => {
     }
   
     try {
-      const response = await fetch(`https://0ca3-175-176-33-143.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
+      const response = await fetch(`https://cde4-136-158-25-84.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
         method: 'POST',
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -49,7 +49,7 @@ const ProfileIcon = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://0ca3-175-176-33-143.ngrok-free.app/v1/test/User-fetching', {
+      const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/User-fetching', {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',

@@ -42,7 +42,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://0ca3-175-176-33-143.ngrok-free.app/v1/test/property");
+        const response = await fetch("https://cde4-136-158-25-84.ngrok-free.app/v1/test/property");
         const data = await response.json();
 
         const cities = data.map((apartment) => apartment.address);
