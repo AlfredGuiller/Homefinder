@@ -21,7 +21,7 @@ useEffect(() => {
   const fetchPendingProperties = async () => {
     try {
       const response = await axios.get(
-        "https://cde4-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING,UNAVAILABLE", { headers: {
+        "https://29a8-136-158-25-146.ngrok-free.app/v1/test/property-fetching/PENDING,UNAVAILABLE", { headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
@@ -86,7 +86,7 @@ useEffect(() => {
         throw new Error("Invalid selected user");
       } else {
         const response = await axios.patch(
-          `https://cde4-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,
+          `https://29a8-136-158-25-146.ngrok-free.app/v1/test/update/property/${value.uuid}`,
           { status: "Declined" }, {
            headers: {
             'Access-Control-Allow-Origin': '*',

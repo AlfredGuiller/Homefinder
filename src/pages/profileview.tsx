@@ -24,7 +24,7 @@ const ProfileView = () => {
 
   const getPropertyListing = async () => {
     try {
-      const response = await axios.get(`https://cde4-136-158-25-84.ngrok-free.app/v1/test/property/${encodeURIComponent(user.email)}`, { headers: {
+      const response = await axios.get(`https://29a8-136-158-25-146.ngrok-free.app/v1/test/property/${encodeURIComponent(user.email)}`, { headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Methods': '*',
@@ -43,7 +43,7 @@ const ProfileView = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/User-fetching', { headers: {
+      const response = await fetch('https://29a8-136-158-25-146.ngrok-free.app/v1/test/User-fetching', { headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Methods': '*',
@@ -66,7 +66,7 @@ const ProfileView = () => {
     } else {
 
       const response = await axios.patch(
-        `https://cde4-136-158-25-84.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`, 
+        `https://29a8-136-158-25-146.ngrok-free.app/v1/test/update/user/${updatedUser.uuid}`, 
         {
           firstName: updatedUser.firstName,
           lastName: updatedUser.lastName,
@@ -97,7 +97,7 @@ const handleApprove = async (value) => {
       throw new Error("Invalid selected user");
     } else {
       const response = await axios.patch(
-        `https://cde4-136-158-25-84.ngrok-free.app/v1/test/update/property/${value.uuid}`,  
+        `https://29a8-136-158-25-146.ngrok-free.app/v1/test/update/property/${value.uuid}`,  
         { status: "UNAVAILABLE" },
 
         {

@@ -25,7 +25,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://cde4-136-158-25-84.ngrok-free.app/v1/test/User-dash",  {
+          "https://29a8-136-158-25-146.ngrok-free.app/v1/test/User-dash",  {
             headers: {
               'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export default function Dashboard() {
     data.age = parseInt(formData.get("age"));
 
     try {
-      const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/add/user',  {
+      const response = await fetch('https://29a8-136-158-25-146.ngrok-free.app/v1/test/add/user',  {
         method: 'POST',
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -93,7 +93,7 @@ export default function Dashboard() {
   
     try {
       const response = await axios.patch(
-        `https://cde4-136-158-25-84.ngrok-free.app/v1/test/update/user/${selectedUser.id}`, { headers: {
+        `https://29a8-136-158-25-146.ngrok-free.app/v1/test/update/user/${selectedUser.id}`, { headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',

@@ -17,7 +17,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://cde4-136-158-25-84.ngrok-free.app/v1/test/property-fetching/APPROVED", { headers: {
+          "https://29a8-136-158-25-146.ngrok-free.app/v1/test/property-fetching/APPROVED", { headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
             'Access-Control-Allow-Methods': '*',

@@ -70,7 +70,7 @@ const Navbar = () => {
     data.age = parseInt(formData.get("age"));
 
     try {
-      const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/add/user', {
+      const response = await fetch('https://29a8-136-158-25-146.ngrok-free.app/v1/test/add/user', {
         method: 'POST',
         headers: {
 
@@ -111,7 +111,7 @@ const Navbar = () => {
     const email = e.target && e.target.email ? e.target.email.value : "";
     const password = e.target && e.target.password ? e.target.password.value : "";
 
-    const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/login/user', {
+    const response = await fetch('https://29a8-136-158-25-146.ngrok-free.app/v1/test/login/user', {
       method: 'POST',
       headers: { 
         'Access-Control-Allow-Origin': '*',

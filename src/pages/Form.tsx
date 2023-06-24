@@ -187,7 +187,7 @@ const fetchUserData = async () => {
       formData.append(`file${index + 1}`, file);
     });
     try {
-      const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/add/property', {
+      const response = await fetch('https://29a8-136-158-25-146.ngrok-free.app/v1/test/add/property', {
         method: 'POST',
         body: formData,
         headers: {

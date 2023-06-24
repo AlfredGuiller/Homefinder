@@ -50,7 +50,7 @@ export default function Dashboard() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://cde4-136-158-25-84.ngrok-free.app/v1/test/User-fetching', { headers: {
+      const response = await fetch('https://29a8-136-158-25-146.ngrok-free.app/v1/test/User-fetching', { headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Methods': '*',
@@ -73,7 +73,7 @@ export default function Dashboard() {
     }
   
     try {
-      const response = await fetch(`https://cde4-136-158-25-84.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
+      const response = await fetch(`https://29a8-136-158-25-146.ngrok-free.app/v1/test/sign-out/${encodeURIComponent(user.email)}`, {
         method: 'POST',
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -98,7 +98,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const propertyResponse = await fetch("https://cde4-136-158-25-84.ngrok-free.app/v1/test/property", { headers: {
+        const propertyResponse = await fetch("https://29a8-136-158-25-146.ngrok-free.app/v1/test/property", { headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
@@ -106,7 +106,7 @@ export default function Dashboard() {
         });
         const propertyData = await propertyResponse.json();
 
-        const userResponse = await fetch("https://cde4-136-158-25-84.ngrok-free.app/v1/test/User-dash", { headers: {
+        const userResponse = await fetch("https://29a8-136-158-25-146.ngrok-free.app/v1/test/User-dash", { headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
@@ -114,7 +114,7 @@ export default function Dashboard() {
         });
         const userData = await userResponse.json();
 
-        const pendingResponse = await fetch("https://cde4-136-158-25-84.ngrok-free.app/v1/test/property-fetching/PENDING", { headers: {
+        const pendingResponse = await fetch("https://29a8-136-158-25-146.ngrok-free.app/v1/test/property-fetching/PENDING", { headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
@@ -122,7 +122,7 @@ export default function Dashboard() {
         });
         const pendingData = await pendingResponse.json();
 
-        const approvedResponse = await fetch("https://cde4-136-158-25-84.ngrok-free.app/v1/test/property-fetching/APPROVED", { headers: {
+        const approvedResponse = await fetch("https://29a8-136-158-25-146.ngrok-free.app/v1/test/property-fetching/APPROVED", { headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Methods': '*',
